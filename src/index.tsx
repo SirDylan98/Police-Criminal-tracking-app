@@ -13,7 +13,7 @@ import AddAgents from "./Components/addAgents";
 import { BrowserRouter } from "react-router-dom";
 import RoutingofSystem from "./Components/routing";
 import NavbarBs from "./Components/navbar";
-import Footer from "./Components/footer";
+import Footer from "./Components/LogInNav";
 import 'react-toastify/dist/ReactToastify.css';
 const root = document.getElementById("root");
 

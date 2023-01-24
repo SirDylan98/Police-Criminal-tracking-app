@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Component } from 'react';
+
 import {IState as IProps} from './map';
 type LatLngLiteral = google.maps.
 LatLngLiteral;// creating datatype of lat long 

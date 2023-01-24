@@ -137,21 +137,20 @@ function Suspects() {
   };
 
   return (
-    <div>
+    <div className="">
       <NavbarBs />
       <ToastContainer/>
 
       {/* <div className="container" > */}
-        <div className="container">
+        <div className=" w-full pr-4 ">
           <div className="row">
+            {/* coll */}
             <div className="col-sm"></div>
-            <div className="col-sm">
+            <div className="col-lg">
               <br></br>
               <br></br>
               <h2 className="md-5 text-center" > Suspects</h2>
-              <br></br>
-              <br></br>
-              <br></br>
+            
               <p>
                 <strong>Add New Suspect</strong>
               </p>
@@ -253,7 +252,7 @@ function Suspects() {
                     className="form-control"
                     id="exampleFormControlTextarea1"
                     {...register("suspectdescription", { required: true })}
-                    rows={5}
+                    rows={3}
                   ></textarea>
                   {errors.suspectdescription && (
                     <div className="errors"><p className="text-danger">This field is required</p> </div>
@@ -262,11 +261,12 @@ function Suspects() {
                
                
 
-                <button type="submit" className="btn btn-primary btn-lg btn-block" style={{ backgroundColor: '#24522e' }}>
+                <button type="submit" className="btn btn-primary btn-lg btn-block" style={{ backgroundColor: '#1e293b' }}>
                   Add Suspect
                 </button>
               </form>
             </div>
+            {/* another col */}
             <div className="col-sm"></div>
           </div>
         </div>
@@ -286,7 +286,7 @@ function Suspects() {
           {loadSuspects.map((suspects) => {
             return (
               // passing the current suspect via props using the ... function
-              <div key={suspects.id}>
+              <div className="rounded-xl" key={suspects.id}>
                 <SuspectsCard key={suspects.id} {...suspects} />
                 <br />
               </div>

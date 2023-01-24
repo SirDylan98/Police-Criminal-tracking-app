@@ -22,10 +22,10 @@ function SuspectsCard(suspect: susp) {
   });
 
   return (
-    <div className="card flex-row mx-auto" style={{ width: "40rem" }}>
-      <img src={suspect.imgurl} className="card-img-left" alt="..." />
+    <div className="card flex-row rounded-xl mx-auto" style={{ width: "40rem" }}>
+      <img src={suspect.imgurl} className=" rounded-xl card-img-left" alt="..." />
 
-      <div className="card-body">
+      <div className=" rounded-xl card-body">
         <h5 className="card-title">Name: {suspect.name}</h5>
         <p className="card-text">
           <strong>Alleged Chargies:</strong>
@@ -40,7 +40,7 @@ function SuspectsCard(suspect: susp) {
         </p>
         <a
           href="#"
-          className="btn btn-danger"
+          className="btn m-1 btn-danger"
           onClick={() => deleteSuspect(suspect.id)}
         >
           Delete

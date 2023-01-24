@@ -9,7 +9,12 @@ import { collection, getDocs, query, where } from 'firebase/firestore'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { susp } from './mapagents'
-import { GoogleMap, Marker, MarkerClusterer, Circle } from '@react-google-maps/api'
+import {
+  GoogleMap,
+  Marker,
+  MarkerClusterer,
+  Circle,
+} from '@react-google-maps/api'
 import { Nav } from 'react-bootstrap'
 import { date } from 'yup'
 
@@ -34,21 +39,21 @@ type suspectdetails = {
   address?: string
   datetime?: string
 }
-const defaultOptions={
-  strokeOpacity:0.9,
-  clickable:false,
-  strokeWeight:2,
-  draggable:false,
-  editable:false,
-  visible:true,
+const defaultOptions = {
+  strokeOpacity: 0.9,
+  clickable: false,
+  strokeWeight: 2,
+  draggable: false,
+  editable: false,
+  visible: true,
 }
 
-const closeOptions={
+const closeOptions = {
   ...defaultOptions,
-  zIndex:3,
-  fillOpacity:0.09,
-  strokeColor: "#FF5252",
-  fillcolor:"#FF5252",
+  zIndex: 3,
+  fillOpacity: 0.09,
+  strokeColor: '#FF5252',
+  fillcolor: '#FF5252',
 }
 function Report() {
   const [suspdoc, setSuspdoc] = useState<Suspects[] | undefined>()
@@ -75,7 +80,6 @@ function Report() {
   const auth = getAuth()
 
   const onSubmit = handleSubmit(async (data1: Suspects) => {
-  
     console.log(data1.name)
     const q = query(suspectcollection, where('name', '==', data1.name))
     const querySnapshot = await getDocs(q)
@@ -95,100 +99,58 @@ function Report() {
   const center = { lat: -17.849517, lng: 31.094452 }
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="#">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxNiIe3uPgRuWs_PDnWYxqatTjaK1hKqe5TOqY0M0&s"
-            width="50"
-            height="50"
-            className="d-inline-block align-top"
-            alt=""
-          />
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="/map">
-                Home <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item active">
-              <a className="nav-link" href="/addagents">
-                Agents <span className="sr-only">(current)</span>
-              </a>
-            </li>
-
-            <li className="nav-item active">
-              <a className="nav-link" href="/suspects">
-                Suspects <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item active">
-              <a className="nav-link" href="/report">
-                Report <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item active">
-              <a className="nav-link" href="/addadmin">
-                Admins <span className="sr-only">(current)</span>
-              </a>
-            </li>
-          </ul>
-          <form className="form-inline my-2 my-lg-0" onSubmit={onSubmit}>
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search by Name"
-              aria-label="Search"
-              {...register('name', { required: true })}
-            />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
-        </div>
-      </nav>
-      <div className="containerr">
-        <GoogleMap zoom={8} center={center} mapContainerClassName="container1">
+      
+      <NavbarBs />
+      <div className="containerr flex flex-col md:flex-row bg-[#1e293b]">
+        <GoogleMap zoom={8} center={center} mapContainerClassName="w-[100%] md:w-[80%] rounded-xl h-screen">
           <>
-          {suspdoc?.map((suspectdata) =>
-            suspectdata.recentlocation?.map((data) => (
-              <>
-              <Marker
-                key={data.lat}
-                position={{ lat: Number(data?.lat!), lng: Number(data?.long!) }}
-                onClick={() => {
-                  //  console.log(data)
-                  console.log(data.address)
-                  setSuspDetails(data)
-                }}
-              />
-              <Circle center={{ lat: Number(data?.lat!), lng: Number(data?.long!) }} radius={5000} options={closeOptions}/>
-              // console.log("this is my array data",data);
-              </>
-            )),
-          )}
-          
+            {suspdoc?.map((suspectdata) =>
+              suspectdata.recentlocation?.map((data) => (
+                <>
+                  <Marker
+                    key={data.lat}
+                    position={{
+                      lat: Number(data?.lat!),
+                      lng: Number(data?.long!),
+                    }}
+                    onClick={() => {
+                      //  console.log(data)
+                      console.log(data.address)
+                      setSuspDetails(data)
+                    }}
+                  />
+                  <Circle
+                    center={{
+                      lat: Number(data?.lat!),
+                      lng: Number(data?.long!),
+                    }}
+                    radius={5000}
+                    options={closeOptions}
+                  />
+                  // console.log("this is my array data",data);
+                </>
+              )),
+            )}
           </>
         </GoogleMap>
 
-        <div className="container2">
-          <div className="card" style={{ width: '18rem' }}>
+        <div className="w-[100%] md:w-[20%] bg-[#1e293b]">
+        <form className=" w-full my-2 my-lg-0" onSubmit={onSubmit}>
+              <input
+                className="w-full py-2 rounded-xl px-3"
+                type="search"
+                placeholder="Search by Name"
+                aria-label="Search"
+                {...register('name', { required: true })}
+              />
+              <button
+                className="px-4 text-center py-2 w-full bg-gray-300 rounded-full my-2 font-semibold hover:translate-x-2 duration-500"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
+          <div className="card bg-[#1e293b]" style={{ width: '100%' }}>
             <div className="card-body">
               <p className="card-body">
                 <strong>Located at:</strong> {suspdetails?.address}
@@ -196,21 +158,31 @@ function Report() {
               <p className="card-text">Time:{suspdetails?.datetime}</p>
             </div>
           </div>
+          <div>
+           
+            <div className="card bg-[#1e293b]" style={{ width: '100%' }}>
+              <div className="card-header  bg-success">Recent Locations</div>
+              <ul className="list-group bg-[#1e293b] list-group-flush">
+                {suspdoc?.map((suspectdata) =>
+                  suspectdata.recentlocation?.map((data) => (
+                    <li className=" text-gray-300 flex flex-col border-b mx-2 my-2 bg-[#1e293b]">
+                      <div>
 
-          <div className="card" style={{ width: '18rem' }}>
-            <div className="card-header  bg-success">Recent Locations</div>
-            <ul className="list-group list-group-flush">
-              {suspdoc?.map((suspectdata) =>
-                suspectdata.recentlocation?.map((data) => (
-                  
-                  <li className="list-group-item"><strong>At :</strong>{data.address?.slice(0,-25)} <strong>Time:</strong>{data.datetime}</li>
-                )),
-              )}
-              
-            </ul>
+                      <strong className=' text-orange-300'>At :</strong>
+                      {data.address?.slice(0, -25)} 
+                      </div>
+                      <div>
+
+                      <strong className=' text-orange-300'>Time:</strong>
+                      {data.datetime}
+                      </div>
+                    </li>
+                  )),
+                )}
+              </ul>
+            </div>
           </div>
 
-          
           {/* <Bar suspects={suspects} setSuspects={setSuspects} /> */}
         </div>
       </div>

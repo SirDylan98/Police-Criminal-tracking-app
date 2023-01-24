@@ -122,8 +122,13 @@ export default function Map() {
   ])
 
   return (
-    <div>
+    <div className='w-full rounded-lg'>
       <NavbarBs />
+      <div className='w-full h-9 bg-gray-300  text-red-600 text-lg flex justify-center items-end my-auto font-semibold '>
+        <p className='flex my-auto'>Click on the Location marker to get details of the Suspect</p>
+      </div>
+      <div className='w-full rounded-full h-screen mt-0'>
+
       <GoogleMap
         zoom={8}
         center={center}
@@ -145,6 +150,7 @@ export default function Map() {
           />
         ))}
       </GoogleMap>
+      </div>
     </div>
   )
 }
