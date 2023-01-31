@@ -19,11 +19,10 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
-import firebase from "firebase/compat/app";
+
 import SuspectsCard from "./card";
 import { susp } from "./mapagents";
 import NavbarBs from "./navbar";
-const prgvalue = 50;
 type addSuspects = {
   fullname?: string;
   address?: string; //the question mark is used to indicate that the field is optional
@@ -137,7 +136,7 @@ function Suspects() {
   };
 
   return (
-    <div className="">
+    <div className=" bg-gray-100">
       <NavbarBs />
       <ToastContainer/>
 
@@ -151,12 +150,12 @@ function Suspects() {
               <br></br>
               <h2 className="md-5 text-center" > Suspects</h2>
             
-              <p>
+              <p className="text-center mt-10">
                 <strong>Add New Suspect</strong>
               </p>
-              <form className="container" onSubmit={onSubmit}>
+              <form className="mx-1" onSubmit={onSubmit}>
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Full Name</label>
+                  <label htmlFor="exampleInputEmail1" className="font-bold text-[#1e293b]">Full Name</label>
                   <input
                     type="text"
                     className="form-control"
@@ -166,11 +165,11 @@ function Suspects() {
                     {...register("fullname", { required: true })} // use the register useForm to get the value of the text input
                   />
                   {errors.fullname && (
-                    <div className="errors"><p className="text-danger">Name is Required</p></div>
+                    <div className="errors"><p className="text-danger font-semibold">Name is Required</p></div>
                   )}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInput">Home Address</label>
+                  <label htmlFor="exampleInput" className="font-bold text-[#1e293b] ">Home Address</label>
                   <input
                     type="text"
                     className="form-control"
@@ -183,15 +182,16 @@ function Suspects() {
                     <div className="errors"><p className="text-danger">Home Address is Required</p></div>
                   )}
                 </div>
-                <div className="form-group">
-                  <label htmlFor="exampleInput">Upload Suspect Image</label>
+                <div className="form-group flex flex-col">
+                  <label htmlFor="exampleInput" className="font-bold text-[#1e293b]">Upload Suspect Image</label>
                   <input
                     type="file"
+                    className="text-lg"
                     {...register("imagesource", { required: true })}
                     onChange={(files) => onFilechange(files.target.files)}
                   />
                   {
-                    <div className="progress">
+                    <div className="progress mt-1">
                       <div
                         className="progress-bar"
                         role="progressbar"
@@ -213,9 +213,9 @@ function Suspects() {
                 <div className="mb-3">
                   <label
                     htmlFor="exampleFormControlTextarea1"
-                    className="form-label"
+                    className="form-label font-bold text-[#1e293b]"
                   >
-                    <strong>Alleged Chargies</strong>
+                    Alleged Chargies
                   </label>
                   <textarea
                     className="form-control"
@@ -228,7 +228,7 @@ function Suspects() {
                   )}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="exampleInputEmail1">Wanted Level</label>
+                  <label htmlFor="exampleInputEmail1" className="font-bold text-[#1e293b]">Wanted Level</label>
                   <input
                     type="text"
                     className="form-control"
@@ -261,7 +261,7 @@ function Suspects() {
                
                
 
-                <button type="submit" className="btn btn-primary btn-lg btn-block" style={{ backgroundColor: '#1e293b' }}>
+                <button type="submit" className="text-gray-300  py-2 text-xl  btn-block rounded-lg  bg-[#1e293b]" >
                   Add Suspect
                 </button>
               </form>
@@ -286,7 +286,7 @@ function Suspects() {
           {loadSuspects.map((suspects) => {
             return (
               // passing the current suspect via props using the ... function
-              <div className="rounded-xl" key={suspects.id}>
+              <div className="rounded-xl mx-1" key={suspects.id}>
                 <SuspectsCard key={suspects.id} {...suspects} />
                 <br />
               </div>

@@ -22,8 +22,8 @@ function SuspectsCard(suspect: susp) {
   });
 
   return (
-    <div className="card flex-row rounded-xl mx-auto" style={{ width: "40rem" }}>
-      <img src={suspect.imgurl} className=" rounded-xl card-img-left" alt="..." />
+    <div className="flex flex-col    rounded-xl mx-auto w-[100%] shadow-md shadow-black/20 md:w-[40%]" >
+      <img src={suspect.imgurl} className=" rounded-xl h-72  " alt="..." />
 
       <div className=" rounded-xl card-body">
         <h5 className="card-title">Name: {suspect.name}</h5>

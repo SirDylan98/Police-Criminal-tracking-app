@@ -1,14 +1,8 @@
 import * as React from 'react'
-import { useState, useMemo, useCallback, useRef, useEffect } from 'react'
-import Bar from './sideBar'
-import { Component } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import {
-  useLoadScript,
   GoogleMap,
   Marker,
-  DirectionsRenderer,
-  Circle,
-  MarkerClusterer,
 } from '@react-google-maps/api'
 import {
   collection,
@@ -24,7 +18,7 @@ import { firestore, spottedsuspectCollection } from '../Libs/controller'
 import firebase from 'firebase/compat/app'
 import { app, GeoFirestore, storage } from '../Libs/firebase'
 import { Navigate, useNavigate } from 'react-router-dom'
-import Mapagents from './mapagents'
+
 import NavbarBs from './navbar'
 type LatLngLiteral = google.maps.LatLngLiteral // creating datatype of lat long
 type DirectionsResult = google.maps.DirectionsResult // creating  a datatype that can handle direction results
@@ -79,6 +73,7 @@ export default function Map() {
   const [suspectslocatedexpo2, setSuspectslocatedexpo2] = useState<susp>()
   selectedsuspectvar = suspectsselected
   selectedSsuspectvarexpo = suspectslocatedexpo2
+  
   const getDetails = async (s: string) => {
     const getsuspectdocs = query(
       collection(firestore, 'suspects'),

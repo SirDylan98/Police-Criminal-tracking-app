@@ -2,18 +2,12 @@ import React from "react";
 import { render } from "react-dom";
 //import ReactDOM from 'react-dom/client';
 import "./index.css";
-import App from "./App";
+
 import reportWebVitals from "./reportWebVitals";
-import Map from "./Components/map";
+
 import "bootstrap/dist/css/bootstrap.css";
-import Login from "./Components/login";
-import AddAdmin from "./Components/addAdmin";
-import AddSuspects from "./Components/addSuspects";
-import AddAgents from "./Components/addAgents";
 import { BrowserRouter } from "react-router-dom";
 import RoutingofSystem from "./Components/routing";
-import NavbarBs from "./Components/navbar";
-import Footer from "./Components/LogInNav";
 import 'react-toastify/dist/ReactToastify.css';
 const root = document.getElementById("root");
 
@@ -23,9 +17,9 @@ render(
     {/* <div className="contianer">
           <NavbarBs/>
         </div> */}
+      
+      <div className="w-screen h-screen">
       <RoutingofSystem/>
-      <div className="contianer">
-          
         </div>
     </BrowserRouter>
   </React.StrictMode>,

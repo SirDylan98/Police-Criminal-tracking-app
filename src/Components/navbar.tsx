@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container, Button } from 'react-bootstrap'
+
 import { getAuth, signOut } from 'firebase/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../Assets/policelogo.png'
@@ -28,8 +28,11 @@ function NavbarBs() {
     <div>
       <div className="w-full flex  justify-between items-center mb-3 my-auto p-2   bg-[#1e293b]">
         <div className="text-gray-300 flex  items-center">
-          <img src={logo} alt="" className="w-10 mr-2 h-10" />
-          <h1 className="text-xl">ZRP Criminal Tracking System</h1>
+          <Link to="/map" className='hover:no-underline flex hover:text-gray-300 text-gray-300'>
+
+          <img src={logo} alt="" className="w-10  mr-2 h-10" />
+          <h1 className="text-xl mt-2 hover:text-gray-300">ZRP Criminal Tracking System</h1>
+          </Link>
         </div>
 
         <div className=" items-center  my-auto">

@@ -59,7 +59,7 @@ function AddAgents() {
    // alert("new agent added sucsessfuly");
   });
   return (
-    <div >
+    <div  className="bg-gray-100">
        <div >
           <NavbarBs/>
         </div>
@@ -67,20 +67,17 @@ function AddAgents() {
         <div className="col-sm"></div>
         <div className="col-sm">
 
-          <br></br>
-          <br></br>
-          <h2 className="md-5 text-center" > Agents</h2>
-          <br></br>
-          <br></br>
-          <br></br>
-          <p><strong>Add New Agent</strong></p>
-          <form className="container" onSubmit={onSubmit}>
+          
+          <h2 className="md-5 text-center mt-10" > Agents</h2>
+          
+          <p className="font-bold ml-3 text-center mt-10 text-[#1e293b]">Add New Agent</p>
+          <form className="container " onSubmit={onSubmit}>
           <ToastContainer />
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Full Name</label>
+            <div className="form-group ">
+              <label htmlFor="exampleInputEmail1" className="font-bold text-[#1e293b]">Full Name</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control "
                 id="exampleInput"
                 aria-describedby="emailHelp"
                 placeholder="Enter Full Name"
@@ -91,7 +88,7 @@ function AddAgents() {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Phone Number</label>
+              <label htmlFor="exampleInputEmail1" className="font-bold text-[#1e293b]">Phone Number</label>
               <input
                 type="text"
                 className="form-control"
@@ -109,7 +106,7 @@ function AddAgents() {
                 <strong> Location</strong>
               </label>
               <br></br>
-              <label htmlFor="exampleInputEmail1">Latitude</label>
+              <label htmlFor="exampleInputEmail1" className="font-bold text-[#1e293b]">Latitude</label>
               <input
                 type="text"
                 className="form-control"
@@ -122,7 +119,7 @@ function AddAgents() {
               )}
             </div>
             <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Longitude</label>
+              <label htmlFor="exampleInputPassword1" className="font-bold text-[#1e293b]">Longitude</label>
               <input
                 type="text"
                 className="form-control"
@@ -141,13 +138,13 @@ function AddAgents() {
                 id="exampleCheck1"
                 {...register("available")}
               />
-              <label className="form-check-label" htmlFor="exampleCheck1">
+              <label className="form-check-label text-[#1e293b] font-bold" htmlFor="exampleCheck1">
                 Available?
               </label>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-lg btn-block" style={{ backgroundColor: '#24522e' }}>
-              Add Agent
+            <button type="submit" className="text-gray-300  py-2 text-xl  btn-block rounded-lg  bg-[#1e293b]" >
+              Add Agent 
             </button>
           </form>
           {isloading&&<div className="text-center">

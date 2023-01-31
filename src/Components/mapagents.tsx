@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { useState, useMemo, useCallback, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { FiFlag } from 'react-icons/fi'
 import { ImLocation } from 'react-icons/im'
 
@@ -87,10 +88,16 @@ interface GeoDocumentData {
 }
 
 export default function Mapagents() {
+  
+  const navigate=useNavigate();
   const suspaddress = selectedsuspectvar?.address
+  if(selectedsuspectvar?.name==""){
+    navigate('/map')
+  }
   const [directions, setDirections] = useState<DirectionsResult>()
   const [selectedAgent, setSelectedAgent] = useState<GeoDocumentData>()
   const geocollection = GeoFirestore.collection('agents')
+  console.log("THE SELECTED SUSPECT DETAILS ARE ",selectedsuspectvar)
   console.log('THIS IS MY TESTING LAT', selectedsuspectvar?.lat!)
   console.log('THIS IS MY TESTING LONG', Number(selectedsuspectvar?.long!))
   const query = geocollection.near({

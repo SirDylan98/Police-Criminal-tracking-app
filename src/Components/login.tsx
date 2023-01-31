@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form' // importing react hook forms 
 import { useNavigate } from 'react-router-dom'
-import AddAdmin from './addAdmin'
 import Footer from './LogInNav'
-import NavbarBs from './navbar'
+
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -15,23 +14,24 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { IoIosLogIn } from 'react-icons/io'
 
-type userAuth = { email: string; password: string }
+type userAuth = { email: string; password: string } // custom user defined data type
+
 function Login() {
   const [isauthing, setIsauthing] = useState(false)
   let errmsg
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<userAuth>()
+
+  const { register, handleSubmit, formState: { errors },  } = useForm<userAuth>()
+
   const [autherror, setAutherror] = useState(false)
   const navigate = useNavigate()
+  // function to throw a toast popup
   const notifySuccess = () => {
     toast.success('Login In Successful', {
       position: toast.POSITION.BOTTOM_CENTER,
       autoClose: 2000,
     })
   }
+  // function to handle Anonymous LogIn
   const onSubmitAnonymous = async () => {
     const auth = getAuth()
     setIsauthing(true)
@@ -76,16 +76,14 @@ function Login() {
   })
 
   return (
-    <div className="w-full flex flex-col ">
+    <div className="w-full h-full flex flex-col bg-gray-100 ">
       <Footer />
       <br></br>
       <br></br>
       <br></br>
       <br />
-      <div className=''>
-        <h2 className="mb-5 text-center text-4xl text-gray-800 ">
-          LOG IN
-        </h2>
+      <div className="">
+        <h2 className="mb-5 text-center text-4xl text-gray-800 ">LOG IN</h2>
       </div>
 
       <br></br>
@@ -148,7 +146,7 @@ function Login() {
             </button>
           </div>
           {isauthing && (
-            <div className="text-center">
+            <div className="text-center mt-2">
               <div className="spinner-border" role="status">
                 {/* <span className="visually-hidden">Signing In...</span> */}
               </div>
@@ -165,19 +163,7 @@ function Login() {
       </div>
     </div>
 
-    // <form onSubmit={onSubmit}>
-    //     <div>
-    //         <label htmlFor='Email'>Email</label>
-    //         <input {...register("email")} id='email' name='email'  type="email"/>
-    //     </div>
-    //  <div>
-    //      <label htmlFor='Password'>Password</label>
-    //     <input {...register("password")} id='password' name='password'  type="text"/>
-    // </div>
-    // <div>
-    //     <button type='submit' >Login</button>
-    // </div>
-    // </form>
+  
   )
 }
 

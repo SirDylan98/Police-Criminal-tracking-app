@@ -60,7 +60,7 @@ function AddAdmin() {
     <div >
       <NavbarBs />
 
-      <div className="container-fluid" style={{ width: "100%" }}>
+      <div className="container-fluid bg-gray-100" style={{ width: "100%" }}>
         <div className="row">
           <div className="col-sm"></div>
           <div className="col-sm">
@@ -70,13 +70,13 @@ function AddAdmin() {
             <br></br>
             <br></br>
             <br></br>
-            <p>
-              <strong>Add New Admin</strong>
+            <p className="text-[#1e293b] font-bold text-center ml-3">
+            Add New Admin
             </p>
             <form className="container" onSubmit={onSubmit}>
               <ToastContainer/>
               <div className="form-group">
-                <label htmlFor="exampleInput">Full Name</label>
+                <label htmlFor="exampleInput" className="text-[#1e293b] font-bold">Full Name</label>
                 <input
                   type="text"
                   className="form-control"
@@ -89,7 +89,7 @@ function AddAdmin() {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="national ID">National ID </label>
+                <label htmlFor="national ID" className="text-[#1e293b] font-bold">National ID </label>
                 <input
                   type="text"
                   className="form-control"
@@ -102,7 +102,7 @@ function AddAdmin() {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Email address</label>
+                <label htmlFor="exampleInputEmail1" className="text-[#1e293b] font-bold">Email address</label>
                 <input
                   type="email"
                   className="form-control"
@@ -116,7 +116,7 @@ function AddAdmin() {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Password</label>
+                <label htmlFor="exampleInputPassword1" className="text-[#1e293b] font-bold">Password</label>
                 <input
                   type="password"
                   className="form-control"
@@ -132,7 +132,7 @@ function AddAdmin() {
                 )}
               </div>
               <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Re-Enter Password</label>
+                <label htmlFor="exampleInputPassword1" className="text-[#1e293b] font-bold">Re-Enter Password</label>
                 <input
                   type="password"
                   className="form-control"
@@ -150,7 +150,7 @@ function AddAdmin() {
                 {passwordNoMatch&&<span className="text-danger" >Passwords not Matching</span>}
               </div>
           
-              <button type="submit" className="btn btn-primary btn-lg btn-block" style={{ backgroundColor: '#24522e' }}>
+              <button type="submit" className=" text-gray-300  py-2 text-xl  btn-block rounded-lg  bg-[#1e293b]">
                 Add New Admin
               </button>
             </form>
